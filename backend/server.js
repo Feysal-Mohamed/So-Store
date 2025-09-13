@@ -12,8 +12,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI, )
@@ -23,6 +23,7 @@ mongoose.connect(process.env.MONGO_URI, )
 // Routes
 app.use( roters);
 app.use( rotersProduct);
+app.use("/allImages", express.static('imageDoc'))
 
 // Start server
 app.listen(PORT, () => {

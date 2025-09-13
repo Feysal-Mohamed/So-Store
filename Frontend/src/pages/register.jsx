@@ -7,7 +7,6 @@ const RegisterForm = () => {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-
   const handleSubmit = async (e) => {
     e.preventDefault(); // prevent page reload
 
@@ -24,6 +23,7 @@ const RegisterForm = () => {
       setEmail("");
       setPhone("");
       setPassword("");
+
     } catch (err) {
       if (err.response) {
         setMessage(err.response.data.error || "Registration failed");

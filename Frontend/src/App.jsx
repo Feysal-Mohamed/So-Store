@@ -8,7 +8,9 @@ import People from "./pages/People";
 import LoginForm from "./pages/Loginuser";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import RegisterForm from "./pages/Register";
+import RegisterForm from "./pages/register";
+import ProfilePage from "./pages/myProfile";
+import AddProduct from "./components/addproduct";
 const App = () => {
   return (
     <div>
@@ -23,6 +25,8 @@ const App = () => {
         <Route path="/people" element={<People />} />
         <Route path="/Login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
+        <Route path="/ProfilePage" element={<ProfilePage />} />
+        <Route path="/Addproduct" element={<AddProduct />} />
       </Routes>
     </Router>
 

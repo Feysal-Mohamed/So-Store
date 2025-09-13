@@ -6,16 +6,13 @@ const registerUser = async (req, res) => {
   try {
     const { name, email, phone, password } = req.body;
 
-    // Check if email already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ error: "Email already registered" });
     }
 
-    // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create new user
     const newUser = new User({
       name,
       email,
@@ -41,7 +38,6 @@ const loginUser = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ error: "Invalid email or password" });
 
-    // ✅ Return name, phone, and email too
     res.json({
       message: "Login successful",
       userId: user.userId,
@@ -49,10 +45,17 @@ const loginUser = async (req, res) => {
       phone: user.phone,
       email: user.email,
     });
-
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
-module.exports = { registerUser, loginUser };
+// READ all users
+const readUser = async (req, res) => {
+    const getData = await User.find();
+    if (getData) {
+        res.send(getData);
+    }
+};
+
+module.exports = { registerUser, loginUser, readUser };

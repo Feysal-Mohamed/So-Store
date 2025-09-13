@@ -39,11 +39,11 @@ const LoginForm = () => {
 
 
 
-      // Redirect after a short delay
-      setTimeout(() => {
-         window.location.reload();
-        navigate("/"); // Change this to your dashboard or home page
-      }, );
+    // Redirect after a short delay
+    setTimeout(() => {
+      window.location.reload();
+    }, 150);
+    navigate("/"); // Change this to your dashboard or home page
 
     } catch (err) {
       setMessage(err.response?.data?.error || "Invalid email or password");

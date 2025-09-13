@@ -4,16 +4,18 @@ const uploadImage = require("../middleware/uploadImages");
 // CREATE (POST) product with multiple images
 const addProduct = async (req, res) => {
   try {
-    const { name, description, price, userId } = req.body;
+    const { name, description, price, userId, quantity, category } = req.body;
 
-    // Store uploaded image paths
-    const images = req.files ? req.files.map(file => `/imageDoc/${file.originalname}`) : [];
+    // Store uploaded image filenames
+    const images = req.files ? req.files.map(file => file.filename) : [];
 
     const newProduct = new Product({
       name,
       description,
       price,
-      userId,
+      userId: Number(userId),
+      quantity: Number(quantity) || 1,
+      category: category || "",
       images
     });
 
@@ -40,7 +42,7 @@ const getAllProducts = async (req, res) => {
 const getUserProducts = async (req, res) => {
   try {
     const { userId } = req.params;
-    const products = await Product.find({ userId });
+    const products = await Product.find({ userId: Number(userId) });
     res.status(200).json(products);
   } catch (error) {
     console.error(error);
@@ -52,17 +54,22 @@ const getUserProducts = async (req, res) => {
 const updateProduct = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, description, price } = req.body;
+    const { name, description, price, quantity, category } = req.body;
 
-    const updatedData = { name, description, price };
+    const updatedData = {
+      name,
+      description,
+      price: Number(price),
+      quantity: Number(quantity),
+      category
+    };
 
     // Update images if new files uploaded
     if (req.files && req.files.length > 0) {
-      updatedData.images = req.files.map(file => `/imageDoc/${file.originalname}`);
+      updatedData.images = req.files.map(file => file.filename);
     }
 
     const updatedProduct = await Product.findByIdAndUpdate(id, updatedData, { new: true });
-
     res.status(200).json({ message: "Product updated", product: updatedProduct });
   } catch (error) {
     console.error(error);

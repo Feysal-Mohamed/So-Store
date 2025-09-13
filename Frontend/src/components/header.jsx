@@ -72,9 +72,11 @@ const Header = () => {
             {user ? (
               <div className="flex items-center space-x-3">
                 {/* Show first letter of user's name */}
+                <NavLink to="/ProfilePage">
                 <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">
-                  {user.name[0].toUpperCase()}
+                   {user?.name ? user.name[0].toUpperCase() : "?"}
                 </div>
+                </NavLink>
                 <button
                   onClick={handleLogout}
                   className="px-3 py-1 border border-red-500 text-red-500 rounded hover:bg-red-50"
