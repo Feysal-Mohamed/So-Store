@@ -59,13 +59,18 @@ const Header = () => {
                 People
               </NavLink>
             </li>
+             <li>
+              <NavLink to="/Cart" className={navClass}>
+               <i class="fas fa-shopping-cart mr-2"></i>
+              </NavLink>
+            </li>
           </ul>
 
           {/* Right side: Cart + Auth/User */}
           <div className="flex items-center space-x-4 ml-6">
             {/* Cart Icon */}
             <NavLink to="/cart" className="text-gray-700 hover:text-blue-500 text-xl">
-              <i className="fas fa-shopping-cart"></i>
+              {/* <i className="fas fa-shopping-cart"></i> */}
             </NavLink>
 
             {/* If user is logged in */}

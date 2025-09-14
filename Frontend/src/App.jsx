@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RegisterForm from "./pages/register";
 import ProfilePage from "./pages/myProfile";
 import AddProduct from "./components/addproduct";
+import ShoppingCart from "./pages/Cart";
 const App = () => {
   return (
     <div>
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/ProfilePage" element={<ProfilePage />} />
         <Route path="/Addproduct" element={<AddProduct />} />
+        <Route path="/Cart" element={<ShoppingCart />} />
       </Routes>
     </Router>
 

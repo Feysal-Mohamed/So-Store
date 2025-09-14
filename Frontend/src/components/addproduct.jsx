@@ -73,112 +73,122 @@ const AddProduct = () => {
     }
   };
 
+  
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 sm:px-20">
-      <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">Add Product</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-gray-700">Product Name</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
-            />
-          </div>
+  <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 px-4 sm:px-20">
+    <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 w-full max-w-md transform hover:scale-[1.02] animate-fadeInUp">
+      <h2 className="text-3xl font-bold mb-6 text-gray-800 text-center">Add Product</h2>
+      <form onSubmit={handleSubmit} className="space-y-5">
+        {/* Product Name */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Product Name</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
 
-          <div>
-            <label className="block text-gray-700">Description</label>
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
-            ></textarea>
-          </div>
+        {/* Description */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 resize-none"
+            rows={3}
+          ></textarea>
+        </div>
 
-          <div>
-            <label className="block text-gray-700">Price</label>
-            <input
-              type="number"
-              name="price"
-              value={formData.price}
-              onChange={handleChange}
-              required
-              className="w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
-            />
-          </div>
+        {/* Price */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Price</label>
+          <input
+            type="number"
+            name="price"
+            value={formData.price}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
 
-          <div>
-            <label className="block text-gray-700">Quantity</label>
-            <input
-              type="number"
-              name="quantity"
-              value={formData.quantity}
-              onChange={handleChange}
-              required
-              
-              className="w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
-            />
-          </div>
+        {/* Quantity */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Quantity</label>
+          <input
+            type="number"
+            name="quantity"
+            value={formData.quantity}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
 
-          <div>
-            <label className="block text-gray-700">Category</label>
-            <input
-              type="text"
-              name="category"
-              value={formData.category}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
-            />
-          </div>
+        {/* Category */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
+          <input
+            type="text"
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
 
-          <div>
-            <label className="block text-gray-700">Product Images</label>
-            <input
-              type="file"
-              name="images"
-              onChange={handleFileChange}
-              multiple
-              className="w-full text-gray-700"
-            />
-            {imagePreviews.length > 0 && (
-              <div className="flex flex-wrap mt-2 gap-2">
-                {imagePreviews.map((src, idx) => (
-                  <img
-                    key={idx}
-                    src={src}
-                    alt={`Preview ${idx}`}
-                    className="w-20 h-20 object-cover rounded"
-                  />
-                ))}
-              </div>
-            )}
-          </div>
+        {/* Images */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Product Images</label>
+          <input
+            type="file"
+            name="images"
+            onChange={handleFileChange}
+            multiple
+            className="w-full text-gray-700"
+          />
+          {imagePreviews.length > 0 && (
+            <div className="flex flex-wrap mt-3 gap-3">
+              {imagePreviews.map((src, idx) => (
+                <img
+                  key={idx}
+                  src={src}
+                  alt={`Preview ${idx}`}
+                  className="w-20 h-20 object-cover rounded-xl border border-gray-300"
+                />
+              ))}
+            </div>
+          )}
+        </div>
 
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200"
-          >
-            Add Product
-          </button>
-        </form>
+        {/* Submit Button */}
+        <button
+          type="submit"
+          className="w-full bg-indigo-600 text-white py-2 rounded-xl hover:bg-indigo-700 transition duration-200 font-semibold"
+        >
+          Add Product
+        </button>
+      </form>
 
-        {message && (
-          <p
-            className={`mt-4 text-center font-medium ${
-              message.includes("Failed") ? "text-red-600" : "text-green-600"
-            }`}
-          >
-            {message}
-          </p>
-        )}
-      </div>
+      {/* Message */}
+      {message && (
+        <p
+          className={`mt-6 text-center font-medium ${
+            message.includes("Failed") ? "text-red-600" : "text-green-600"
+          }`}
+        >
+          {message}
+        </p>
+      )}
     </div>
-  );
+  </div>
+);
 };
 
 export default AddProduct;
